@@ -1,0 +1,384 @@
+{
+	"info": {
+		"_postman_id": "fa9e684f-f69b-4984-b69f-5e64c1ee7bc9",
+		"name": "FakeAPITest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33659613",
+		"_collection_link": "https://www.postman.com/science-specialist-38952403/workspace/f029ebf6-754e-43a6-90ef-204dcd769e28/collection/33659613-fa9e684f-f69b-4984-b69f-5e64c1ee7bc9?action=share&source=collection_link&creator=33659613"
+	},
+	"item": [
+		{
+			"name": "GetAllInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Sucessfully and Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/products",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSinglenfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Get Single User Information Sucessfully and Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Successfully gets the title of the data\", function () {\r",
+							"\tvar jsonData = pm.response.json();\r",
+							"\tpm.expect(jsonData.title).to.eql(\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\");\r",
+							"});\r",
+							"pm.test(\"Successfully gets the price info\", function () {\r",
+							"\tvar jsonData = pm.response.json();\r",
+							"\tpm.expect(jsonData.price).to.eql(109.95);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/products/1",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSingleCategoriesInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Sucessfully gets the Categories Info and Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/products/categories",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSpecificItem",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successfully gets the specific items info and Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/products/category/jewelery",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"category",
+						"jewelery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetSpecificCardInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Gets specific card info and Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/carts?userId=1",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"carts"
+					],
+					"query": [
+						{
+							"key": "userId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "StoreNewInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successfully created Title\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.title).to.eql(\"Fjallraven - Foldsack No. 1 Backpack, Fits 30 Laptops\");\r",
+							"});\r",
+							"pm.test(\"Successfully created Price Item\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.price).to.eql(150.5);\r",
+							"});\r",
+							"pm.test(\"Sucessfully created Description\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.description).to.eql(\"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 14 inches) in the padded sleeve, your everyday\");\r",
+							"});\r",
+							"pm.test(\"Successfully created Images\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.image).to.eql(\"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL15099_.jpg\");\r",
+							"});\r",
+							"pm.test(\"Successfully created Category\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.category).to.eql( \"Women's clothing\");\r",
+							"});\r",
+							"pm.test(\"Successful POST request\", function () {\r",
+							"\tpm.expect(pm.response.code).to.be.oneOf([201]);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Fjallraven - Foldsack No. 1 Backpack, Fits 30 Laptops\",\r\n    \"price\": 150.50,\r\n    \"description\": \"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 14 inches) in the padded sleeve, your everyday\",\r\n    \"category\": \"Women's clothing\",\r\n    \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL15099_.jpg\",\r\n    \"rating\": {\r\n        \"rate\": 3.4,\r\n        \"count\": 129\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/products",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdatedInfo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"Sucessfully Updated title\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.title).to.eql(\"Fjallraven - Foldsack No. 5 Backpack, Fits 60 Laptops\");\r",
+							"});\r",
+							"pm.test(\"Sucessfully Updated Price\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.price).to.eql(250.5);\r",
+							"});\r",
+							"pm.test(\"Successful Updated Categories\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.category).to.eql( \"Women's dress\");\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Fjallraven - Foldsack No. 5 Backpack, Fits 60 Laptops\",\r\n    \"price\": 250.50,\r\n    \"description\": \"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 14 inches) in the padded sleeve, your everyday\",\r\n    \"category\": \"Women's dress\",\r\n    \"image\": \"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL15099_.jpg\",\r\n    \"rating\": {\r\n        \"rate\": 3.6,\r\n        \"count\": 120\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/products/1",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SingleInfoUpdated",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful updated Patch request\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.price).to.eql(500);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n     \"price\":500\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/products/1",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteRequesr",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/products/2",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseUrl",
+			"value": "https://fakestoreapi.com",
+			"type": "string"
+		}
+	]
+}
