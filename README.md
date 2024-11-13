@@ -1,4 +1,5 @@
 ##FakeAPITest API Testing Project
+
 This repository contains a Postman collection for testing the Fake Store API, automated using Newman. The collection tests various endpoints, covering functionalities like retrieving products, fetching user carts, and verifying specific product details. It also includes automation results in an HTML report.
 
 **Project Contents
